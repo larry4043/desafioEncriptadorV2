@@ -12,7 +12,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url("./assets/foto18.jpg");
+    background-image: url("./assets/foto5.jpg");
     background-repeat: no-repeat;
     background-size:cover;
     background-position: left;
@@ -105,7 +105,7 @@ body::before {
     
     border-radius: 16px;
     background: #1875E8;
-    padding: 16px 24px;
+    padding: 16px 2px;
     width: 8em;
     font-size: 24px;
     font-weight: 700;
@@ -119,8 +119,8 @@ body::before {
 
 .botonDesencriptar{
     border-radius: 16px;
-    background: #1875E8;
-    padding: 16px 24px;
+    background: #898989;
+    padding: 16px 2px;
     width: 8em;
     font-size: 24px;
     font-weight: 700;

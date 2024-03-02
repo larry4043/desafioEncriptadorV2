@@ -39,20 +39,21 @@ function ocultarMostrarMensaje() {
 
 function botonEncriptar() {
   
-  //Comentario: agregue "toLowerCase" para convertir en minusculas el texto encriptado
-  let textArea2 = document.getElementById("inputTexto").value.toLowerCase();
-  textArea2 = textArea2.replace(/a|e|i|o|u/g, function (matched) {
+  
+  let mensajeParaEnc = document.getElementById("textoEncriptar").value;
+  mensajeParaEnc = mensajeParaEnc.replace(/a|e|i|o|u/g, function (matched) {
     return vocales[matched];});
 
-  let inputTexto = document.getElementById("textoEncriptar");
-  inputTexto.value = textArea2;
+  let mensajeEnc = document.getElementById("inputTexto");
+  mensajeEnc.value = mensajeParaEnc;
 
-  console.log(textArea2);
+  console.log(mensajeParaEnc);
   
-  limpiar_inputTexto();
-  asignarTextoElemento("p", `El texto fue encriptado con exito`);
-  let color = document.getElementById('mensaje');
-  color.style.color= "red";
+  limpiar_textoEncriptar();
+  ocultarMostrarMensaje();
+  //asignarTextoElemento("p", `El texto fue encriptado con exito`);
+  //let color = document.getElementById('mensaje');
+  //color.style.color= "red";
   mostrarBotonCopiar();
   mostrarBotonDesencriptar();
   return;
@@ -61,20 +62,22 @@ function botonEncriptar() {
 //Comentario: esta funcion es para desencriptar
 function botonDesencriptar() {
   
-  let textArea2 = document.getElementById("inputTexto").value.toLowerCase();
-  textArea2 = textArea2.replace(/ai|enter|imes|ober|ufat/g, function (matched) {
+  let mensajeParaDesenc = document.getElementById("textoEncriptar").value;
+  mensajeParaDesenc = mensajeParaDesenc.replace(/ai|enter|imes|ober|ufat/g, function (matched) {
     return vocaEnc[matched];
   });
   
-  let inputTexto = document.getElementById("textoEncriptar");
-  inputTexto.value = textArea2;
+  let mensajeDesenc = document.getElementById("inputTexto");
+  mensajeDesenc.value = mensajeParaDesenc;
 
-  console.log(textArea2);
+  console.log(mensajeDesenc);
 
-  limpiar_inputTexto();
-  asignarTextoElemento("p", `El texto fue desencriptado con exito`);
-  let color = document.getElementById('mensaje');
-  color.style.color= "blue";
+  limpiar_textoEncriptar();
+  ocultarMostrarMensaje();
+  //limpiar_inputTexto();
+  //asignarTextoElemento("p", `El texto fue desencriptado con exito`);
+  //let color = document.getElementById('mensaje');
+  //color.style.color= "blue";
   mostrarBotonCopiar();
   return;
 }
@@ -82,7 +85,7 @@ function botonDesencriptar() {
 //Comentario: activación del botón copiar para pasar el contenido de un textarea a otro
 function botonCopiar() {
   let boton = document.getElementById("botonCopiar");
-  let textEn = document.getElementById("textoEncriptar").value;
+  let textEn = document.getElementById("inputTexto").value;
   
   navigator.clipboard.writeText(textEn)
   .then(() => {console.log('Texto copiado al portapapeles...')})
@@ -90,6 +93,7 @@ function botonCopiar() {
     console.log('Algo va mal', err);
   })
 
+  limpiar_inputTexto();
   //cambiar el nombre del boton 
   boton.textContent = 'Copiado';
   boton.style.backgroundColor="red";
